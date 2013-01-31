@@ -1,0 +1,57 @@
+[vikrum@cow 05]$ make clean
+rm -f introspective list.o bitree.o bistree.o tokens.o debug.o traverse.o
+report.o clobber.o process.o lookup.o aux.o handle_aux.o handle.o
+process_aux.o lex.yy.c
+[vikrum@cow 05]$ make
+gcc -Wall   -c -o list.o list.c
+gcc -Wall   -c -o bitree.o bitree.c
+gcc -Wall   -c -o bistree.o bistree.c
+flex tokens.lex
+gcc -Wall   -c -o tokens.o lex.yy.c -DYY_NO_UNPUT
+gcc -Wall   -c -o debug.o debug.c
+gcc -Wall   -c -o traverse.o traverse.c
+gcc -Wall   -c -o report.o report.c
+gcc -Wall   -c -o clobber.o clobber.c
+gcc -Wall   -c -o process.o process.c
+gcc -Wall   -c -o lookup.o lookup.c
+gcc -Wall   -c -o aux.o aux.c
+gcc -Wall   -c -o handle_aux.o handle_aux.c
+gcc -Wall   -c -o handle.o handle.c
+gcc -Wall   -c -o process_aux.o process_aux.c
+gcc -Wall -o introspective introspective.c list.o bitree.o bistree.o tokens.o
+debug.o traverse.o report.o clobber.o process.o lookup.o aux.o handle_aux.o
+handle.o process_aux.o -lfl
+[vikrum@cow 05]$ ./introspective test/testdata.c 
+1st Report: Tree structure of user defined variable names.
+             (sorted in aph. order.  Using 'NIL' to indicate none.)
+
+Variable_Name   Right_child_name        Left_child_name         Line_no
+-------------   ----------------        ---------------         -------
+c               NIL                     NIL                     5, 3, 4
+i               p                       c                       3
+il              NIL                     NIL                     5
+p               NIL                     il                      4
+q               x                       i                       4
+r               r1                      NIL                     3, 4
+r1              NIL                     NIL                     5
+x               y                       r                       3, 3, 4
+y               z                       NIL                     3, 4
+z               NIL                     NIL                     4
+2nd Report:
+
+                Tot number      Location of Appearance
+Var_Name        declared        (Function_Type:Function_Name, data type)
+--------        ----------      ----------------------------------------
+c               3               double:get_real, complex; double:get_imag,
+				complex; complex:assign, complex; 
+i               1               complex:assign, double; 
+il              1               int:main, double; 
+p               1               int:main, complex; 
+q               1               int:main, complex; 
+r               2               complex:assign, double; int:main, complex;
+r1              1               int:main, double; 
+x               3               complex:cpxAdd, complex; void:display,
+				complex; int:main, double;
+y               2               complex:cpxAdd, complex; int:main, double; 
+z               1               complex:cpxAdd, complex; 
+[vikrum@cow 05]$ 

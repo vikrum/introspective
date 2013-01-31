@@ -1,0 +1,346 @@
+[vikrum@cow 05]$ make clean
+rm -f introspective list.o bitree.o bistree.o tokens.o debug.o traverse.o
+report.o clobber.o process.o lookup.o aux.o handle_aux.o handle.o
+process_aux.o lex.yy.c
+[vikrum@cow 05]$ make
+gcc -Wall   -c -o list.o list.c
+gcc -Wall   -c -o bitree.o bitree.c
+gcc -Wall   -c -o bistree.o bistree.c
+flex tokens.lex
+gcc -Wall   -c -o tokens.o lex.yy.c -DYY_NO_UNPUT
+gcc -Wall   -c -o debug.o debug.c
+gcc -Wall   -c -o traverse.o traverse.c
+gcc -Wall   -c -o report.o report.c
+gcc -Wall   -c -o clobber.o clobber.c
+gcc -Wall   -c -o process.o process.c
+gcc -Wall   -c -o lookup.o lookup.c
+gcc -Wall   -c -o aux.o aux.c
+gcc -Wall   -c -o handle_aux.o handle_aux.c
+gcc -Wall   -c -o handle.o handle.c
+gcc -Wall   -c -o process_aux.o process_aux.c
+gcc -Wall -o introspective introspective.c list.o bitree.o bistree.o tokens.o
+debug.o traverse.o report.o clobber.o process.o lookup.o aux.o handle_aux.o
+handle.o process_aux.o -lfl
+[vikrum@cow 05]$ ./introspective global.h list_struct.h list.h list.c bitree.h
+bitree.c bistree.h bistree.c debug.h debug.c traverse.h traverse.c report.h
+report.c process.h process.c lookup.h lookup.c aux.h aux.c handle_aux.h
+handle_aux.c handle.h handle.c clobber.h clobber.c process_aux.h process_aux.c
+introspective.c 
+1st Report: Tree structure of user defined variable names.
+             (sorted in aph. order.  Using 'NIL' to indicate none.)
+
+Variable_Name		Right_child_name        Left_child_name         Line_no
+-------------		----------------        ---------------         -------
+argc            	NIL                     NIL                     11
+argv            	asterisk                argc                    11
+asterisk                NIL                     NIL                     34
+avl_data                balanced                argv                    5
+balanced                NIL                     NIL                     4, 5
+brace_state             brackets                avl_data                19
+brackets                buffer                  NIL                     35
+buffer          	NIL                     NIL                     7, 6,
+									15, 8
+comma_patrol            current_function_t      brace_state             20
+current_datatype        current_function_n      NIL                     10
+current_function_n      NIL                     NIL                     12
+current_function_t      current_identifier      current_datatype        11
+current_identifier      data                    NIL                     9
+data            	NIL                     NIL                     4, 2,
+									2, 7,
+									5, 4,
+									4, 7,
+									10, 2,
+									2, 6,
+									4, 4,
+									16, 2,
+									4, 5,
+									4
+decleration_state       inside_function         comma_patrol            14
+element         	NIL                     NIL                     2, 2,
+									4, 4,
+									6, 6,
+									6
+fname           	ftype                   element                 16
+ftype           	NIL                     NIL                     16
+function_being_declared	i                       fname                   16
+grandchild              NIL                     NIL                     6, 6
+i               	id                      grandchild              8, 7,
+									5, 13,
+									6
+id              	NIL                     NIL                     14
+inside_function         line_count              function_being_declared 15
+key             	NIL                     NIL                     3, 11
+key1            	NIL                     key                     15, 4
+key2            	left                    key1                    15, 4
+keywords                NIL                     NIL                     6
+left            	NIL                     keywords                6
+line_count              list                    key2                    37
+line_no         	NIL                     NIL                     15
+list            	need_bracketclosure     line_no                 4, 2,
+									2, 2,
+									2, 7,
+									4, 4,
+									4, 4,
+									4, 4
+lookup          	NIL                     NIL                     7
+need_bracketclosure     NIL                     lookup                  24
+need_functionclosure    stor_count              decleration_state       22
+need_semicolon          NIL                     NIL                     25
+need_structclosure      NIL                     need_semicolon          21
+new_element             node1                   need_structclosure      5
+new_node                NIL                     NIL                     5, 5
+node            	NIL                     new_node                2, 2,
+									2, 2,
+									4, 4,
+									4, 4,
+									10, 4,
+									4, 4,
+									4, 4,
+									3, 2,
+									2, 2,
+									9, 5,
+									5, 4,
+									14, 4,
+									4
+node1           	num                     node                    2, 4
+node2           	NIL                     NIL                     2, 4
+num             	old_element             node2                   3, 4
+old_element             NIL                     NIL                     5
+paren_state             ptr_to_type             new_element             18
+pointer_to_datatype     NIL                     NIL                     23
+position                NIL                     pointer_to_datatype     5, 5,
+									5, 5,
+									5, 5
+ptr_to_type             right                   position                15
+retval          	NIL                     NIL                     15
+right           	space                   retval                  6
+space           	NIL                     NIL                     33
+stor_count              userdef                 paren_state             31
+storage         	NIL                     NIL                     30
+str             	str1                    storage                 3, 2,
+									5, 4,
+									2, 2,
+									4, 4,
+									4, 2,
+									11, 4
+str1            	NIL                     NIL                     3, 14
+str2            	tmp_tnode               str                     3, 14
+tmp_loc         	NIL                     NIL                     3, 9
+tmp_tnode               token                   tmp_loc                 2, 4
+token           	NIL                     NIL                     2, 4,
+									2, 2,
+									5, 4,
+									6
+tree            	typedef_target          str2                    10, 2,
+									2, 2,
+									2, 2,
+									6, 4,
+									4, 4,
+									4, 4,
+									14, 2,
+									2, 10,
+									4, 4,
+									4, 4,
+									4, 4
+typedef_target          user_count              NIL                     17
+user_count              NIL                     NIL                     28
+userdef         	yyin                    tree                    27
+vname           	NIL                     NIL                     16
+vtype           	NIL                     vname                   15
+yyin            	yytext                  vtype                   42
+yytext          	NIL                     NIL                     41
+
+2nd Report:
+
+                	Tot number      Location of Appearance
+Var_Name        	declared        (Function_Type:Function_Name, data type)
+--------        	----------      ----------------------------------------
+argc            	1               int:main, int; 
+argv            	1               int:main, char**; 
+asterisk                1               extern:global, const char[]; 
+avl_data                1               static int:insert, AvlNode*; 
+balanced                2               static int:insert, int*;
+					int:bistree_insert, int; 
+brace_state             1               extern:global, int; 
+brackets                1               extern:global, const char[]; 
+buffer          	4               void:proc_currentidentifier, char*;
+					void:handle_open_bracket, char*;
+					void:handle_reserved, char*;
+					void:handle_identifier, char*; 
+comma_patrol            1               extern:global, int; 
+current_datatype        1               extern:global, char*; 
+current_function_n      1               extern:global, char*; 
+current_function_t      1               extern:global, char*; 
+current_identifier      1               extern:global, char*; 
+data            	19              void:global, void*; int:list_ins_next,
+					const void*; int:list_rem_next,
+					void**; void:global, void*;
+					void:list_destroy, void*;
+					int:list_ins_next, const void*;
+					int:list_rem_next, void**;
+					void:print_list, int*; void:global,
+					void*; int:bitree_ins_left, const
+					void*; int:bitree_ins_right, const
+					void*; void:global, void*;
+					int:bitree_ins_left, const void*;
+					int:bitree_ins_right, const void*;
+					const void void:global, void*;
+					int:bistree_insert, const void*;
+					static int:insert, const void*; const
+					void void:global, void*;
+					int:bistree_insert, const void*; 
+decleration_state	1               extern:global, int; 
+element         	7               int:list_ins_next, ListElmt*;
+					int:list_rem_next, ListElmt*;
+					int:list_ins_next, ListElmt*;
+					int:list_rem_next, ListElmt*;
+					void:print_list, ListElmt*;
+					void:print_formatedlist, ListElmt*;
+					void:print_lineno, ListElmt*; 
+fname           	1               void:proc_data, char*; 
+ftype           	1               void:proc_data, char*; 
+function_being_declared	1               extern:global, int; 
+grandchild              2               static void:rotate_left, BiTreeNode*;
+					static void:rotate_right, BiTreeNode*; 
+i               	5               void:print_list, int;
+					int:userdef_lookup, int;
+					int:reserved_loopup, int;
+					void:handle_reserved, int;
+					void:handle_identifier, int; 
+id              	1               void:handle_reserved, int; 
+inside_function         1               extern:global, int; 
+key             	2               void:handle_userdef, int;
+					void:handle_userdef, int; 
+key1            	2               int:global, const void*; int:global,
+					const void*; 
+key2            	2               int:global, const void*; int:global,
+					const void*; 
+keywords                1               int:reserved_loopup, static const char
+					const[]*; 
+left            	1               static void:rotate_left, BiTreeNode*;
+line_count              1               extern:global, int; 
+line_no         	1               void:proc_data, int; 
+list            	12              void:list_init, List*;
+					void:list_destroy, List*;
+					int:list_ins_next, List*;
+					int:list_rem_next, List*;
+					void:print_list, List*;
+					void:list_init, List*;
+					void:list_destroy, List*;
+					int:list_ins_next, List*;
+					int:list_rem_next, List*;
+					void:print_list, List*;
+					void:print_formatedlist, List*;
+					void:print_lineno, List*; 
+lookup          	1               void:handle_identifier, int; 
+need_bracketclosure     1               extern:global, int; 
+need_functionclosure    1               extern:global, int; 
+need_semicolon          1               extern:global, int; 
+need_structclosure      1               extern:global, int; 
+new_element             1               int:list_ins_next, ListElmt*; 
+new_node                2               int:bitree_ins_left, BiTreeNode*;
+					int:bitree_ins_right, BiTreeNode*; 
+node            	25              int:bitree_ins_left, BiTreeNode*;
+					int:bitree_ins_right, BiTreeNode*;
+					void:bitree_rem_left, BiTreeNode*;
+					void:bitree_rem_right, BiTreeNode*;
+					int:bitree_ins_left, BiTreeNode*;
+					int:bitree_ins_right, BiTreeNode*;
+					void:bitree_rem_left, BiTreeNode*;
+					void:bitree_rem_right, BiTreeNode*;
+					static void:destroy_right,
+					BiTreeNode*; static void:rotate_left,
+					BiTreeNode**; static
+					void:rotate_right, BiTreeNode**;
+					static void:destroy_left, BiTreeNode*;
+					static void:destroy_right,
+					BiTreeNode*; static int:insert,
+					BiTreeNode**; int:preorder,
+					BiTreeNode*; int:inorder, BiTreeNode*;
+					void:global, BiTreeNode*;
+					int:postorder, BiTreeNode*;
+					int:preorder, BiTreeNode*;
+					int:inorder, BiTreeNode*; void:global,
+					BiTreeNode*; int:postorder,
+					BiTreeNode*; void:print_nodechildren,
+					BiTreeNode*; void:report1_format,
+					BiTreeNode*; void:report2_format,
+					BiTreeNode*; 
+node1           	2               int:compare_tnode, const void*;
+					int:compare_tnode, const void*;
+node2           	2               int:compare_tnode, const void*;
+					int:compare_tnode, const void*; 
+num             	2               void:display_report, short;
+					void:display_report, short; 
+old_element             1               int:list_rem_next, ListElmt*; 
+paren_state             1               extern:global, int; 
+pointer_to_datatype     1               extern:global, int; 
+position                6               int:bitree_ins_left, BiTreeNode**;
+					int:bitree_ins_right, BiTreeNode**;
+					void:bitree_rem_left, BiTreeNode**;
+					void:bitree_rem_right, BiTreeNode**;
+					static void:destroy_left,
+					BiTreeNode**; static
+					void:destroy_right, BiTreeNode**; 
+ptr_to_type             1               void:proc_data, int; 
+retval          	1               int:compare_str, int; 
+right          		1               static void:rotate_right, BiTreeNode*;
+space           	1               extern:global, const char[]; 
+stor_count              1               extern:global, int; 
+storage         	1               extern:global, char**; 
+str             	12              int:userdef_lookup, const char*;
+					int:reserved_loopup, const char*;
+					int:userdef_lookup, const char*;
+					int:reserved_loopup, const char*;
+					void:add_usertype, char*;
+					int:make_haste, char*;
+					void:add_usertype, char*;
+					int:make_haste, char*;
+					void:handle_reserved, const char*;
+					void:handle_identifier, const char*;
+					void:handle_reserved, const char*;
+					void:handle_identifier, const char*; 
+str1            	2               int:compare_str, const void*;
+					int:compare_str, const void*;
+str2            	2               int:compare_str, const void*;
+					int:compare_str, const void*; 
+tmp_loc         	2               void:clobber_loc, void*;
+					void:clobber_loc, void*; 
+tmp_tnode               2               void:clobber_tnode, void*;
+					void:clobber_tnode, void*; 
+token           	7               int:make_haste, int; int:make_haste,
+					int; void:handle_paren, int;
+					void:handle_brace, int;
+					void:handle_paren, int;
+					void:handle_brace, int;
+					void:proc_file, int; 
+tree            	22              void:bitree_init, BiTree*;
+					void:bitree_destroy, BiTree*;
+					int:bitree_ins_left, BiTree*;
+					int:bitree_ins_right, BiTree*;
+					void:bitree_rem_left, BiTree*;
+					void:bitree_rem_right, BiTree*;
+					void:bitree_init, BiTree*;
+					void:bitree_destroy, BiTree*;
+					int:bitree_ins_left, BiTree*;
+					int:bitree_ins_right, BiTree*;
+					void:bitree_rem_left, BiTree*;
+					void:bitree_rem_right, BiTree*;
+					void:bistree_init, BisTree*;
+					void:bistree_destroy, BisTree*;
+					int:bistree_insert, BisTree*; static
+					void:destroy_right, BisTree*; static
+					void:destroy_left, BisTree*; static
+					void:destroy_right, BisTree*; static
+					int:insert, BisTree*;
+					void:bistree_init, BisTree*;
+					void:bistree_destroy, BisTree*;
+					int:bistree_insert, BisTree*; 
+typedef_target          1               extern:global, int; 
+user_count              1               extern:global, int; 
+userdef         	1               extern:global, char**; 
+vname           	1               void:proc_data, char*; 
+vtype           	1               void:proc_data, char*; 
+yyin            	1               extern:global, extern*; 
+yytext          	1               extern:global, extern char*; 
+[vikrum@cow 05]$  
