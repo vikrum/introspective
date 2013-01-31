@@ -1,6 +1,6 @@
 This code is unmaintained; it was pulled off of archive.org for nostalgic
 purposes only. :) I believe I wrote this for an introduction to data
-structures course.
+structures course. This code is from Sun Oct 7 12:09:41 PDT 2001.
 
 introspective
 =============
